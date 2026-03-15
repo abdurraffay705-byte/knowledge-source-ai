@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KnowledgeSource | Admin Console</title>
+    <meta name="description" content="Manage your knowledge sources, call logs, and billing.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i data-lucide="sparkles" class="logo-icon"></i>
+                <div class="logo-text">
+                    <span class="brand">KnowledgeSource</span>
+                    <span class="sub-brand">ADMIN CONSOLE</span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active" data-section="overview">
+                    <a href="#"><i data-lucide="layout-grid"></i> Dashboard</a>
+                </li>
+                <li data-section="call-logs">
+                    <a href="#"><i data-lucide="phone"></i> Call Logs</a>
+                </li>
+                <li data-section="knowledge-base">
+                    <a href="#"><i data-lucide="book-open"></i> Knowledge Base</a>
+                </li>
+                <li data-section="billing">
+                    <a href="#"><i data-lucide="bar-chart-3"></i> Billing & Usage</a>
+                </li>
+                <li>
+                    <a href="#"><i data-lucide="users"></i> Team</a>
+                </li>
+                <li>
+                    <a href="#"><i data-lucide="settings"></i> Settings</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="avatar">AR</div>
+                <div class="user-info">
+                    <span class="user-name">Alex Rivera</span>
+                    <span class="user-role">System Administrator</span>
+                </div>
+                <button class="logout-btn" id="logoutBtn"><i data-lucide="log-out"></i></button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="search-container">
+                <i data-lucide="search"></i>
+                <input type="text" placeholder="Search knowledge sources...">
+            </div>
+            <div class="top-bar-actions">
+                <button class="icon-btn"><i data-lucide="bell"></i></button>
+                <button class="icon-btn"><i data-lucide="message-square"></i></button>
+                <div class="user-badge">
+                    <span class="user-badge-name">Alex Rivera</span>
+                    <span class="user-badge-role">Admin</span>
+                    <div class="avatar-small">AR</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Section: Dashboard Overview -->
+        <section id="overview" class="content-section active">
+            <div class="section-header">
+                <div>
+                    <h1>Dashboard Overview</h1>
+                    <p>Welcome back, here's what's happening today.</p>
+                </div>
+                <button class="btn btn-primary"><i data-lucide="download"></i> Export Report</button>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Total Calls</span>
+                        <span class="metric-value">12,482</span>
+                    </div>
+                    <div class="metric-trend up">+12.5%</div>
+                    <div class="metric-icon call-icon"><i data-lucide="phone"></i></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Resolution Rate</span>
+                        <span class="metric-value">88.4%</span>
+                    </div>
+                    <div class="metric-trend up">+2.4%</div>
+                    <div class="metric-icon res-icon"><i data-lucide="check-circle-2"></i></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Escalation Rate</span>
+                        <span class="metric-value">4.2%</span>
+                    </div>
+                    <div class="metric-trend down">-1.1%</div>
+                    <div class="metric-icon esc-icon"><i data-lucide="alert-circle"></i></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Confidence Score</span>
+                        <span class="metric-value">92%</span>
+                    </div>
+                    <div class="metric-trend up">+0.8%</div>
+                    <div class="metric-icon conf-icon"><i data-lucide="shield-check"></i></div>
+                </div>
+            </div>
+
+            <div class="chart-container card">
+                <div class="card-header">
+                    <div>
+                        <h3>Calls Over Time</h3>
+                        <p>Daily call volume analysis</p>
+                    </div>
+                    <div class="time-filters">
+                        <button class="active">7 Days</button>
+                        <button>30 Days</button>
+                        <button>90 Days</button>
+                    </div>
+                </div>
+                <div class="chart-placeholder">
+                    <!-- Simple SVG line chart simulation -->
+                    <svg viewBox="0 0 800 200" class="line-chart">
+                        <polyline fill="none" stroke="#2b8cee" stroke-width="3" points="0,150 100,120 200,160 300,110 400,140 500,90 600,110 700,70 800,90" />
+                        <path d="M0,150 L100,120 L200,160 L300,110 L400,140 L500,90 L600,110 L700,70 L800,90 L800,200 L0,200 Z" fill="url(#chartGradient)" opacity="0.1" />
+                        <defs>
+                            <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#2b8cee" />
+                                <stop offset="100%" stop-color="#2b8cee" stop-opacity="0" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="chart-labels">
+                        <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="knowledge-gaps-section">
+                <div class="section-title">
+                    <h3>Active Knowledge Gaps</h3>
+                    <a href="#" class="view-all">View all gaps</a>
+                </div>
+                <div class="gaps-grid">
+                    <div class="gap-card">
+                        <div class="gap-status critical">CRITICAL</div>
+                        <span class="gap-time">Updated 2h ago</span>
+                        <h4>Refund Policy Exceptions</h4>
+                        <p>Lack of clear documentation for seasonal policy overrides causing 15%...</p>
+                    </div>
+                    <div class="gap-card">
+                        <div class="gap-status moderate">MODERATE</div>
+                        <span class="gap-time">Updated 5h ago</span>
+                        <h4>API Integration Errors</h4>
+                        <p>Agents reporting confusion over Error 409 codes during checkout flow.</p>
+                    </div>
+                    <div class="gap-card">
+                        <div class="gap-status new">NEW</div>
+                        <span class="gap-time">Updated 1d ago</span>
+                        <h4>Enterprise Plan Limits</h4>
+                        <p>New storage caps added last week not yet reflected in agent scripts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Call Logs -->
+        <section id="call-logs" class="content-section">
+            <div class="section-header">
+                <div>
+                    <h1>Call Logs</h1>
+                </div>
+                <button class="btn btn-primary"><i data-lucide="download"></i> Export CSV</button>
+            </div>
+
+            <div class="table-container card">
+                <div class="table-filters">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Search by name, number, or call ID...">
+                    </div>
+                    <div class="filter-chips">
+                        <button class="chip active">All</button>
+                        <button class="chip">Resolved</button>
+                        <button class="chip">Escalated</button>
+                        <button class="chip">Missed</button>
+                    </div>
+                    <div class="dropdown-filter">
+                        <i data-lucide="calendar"></i>
+                        <span>All Time</span>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <button class="btn-text"><i data-lucide="sliders-horizontal"></i> More Filters</button>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>CALLER</th>
+                            <th>DURATION</th>
+                            <th>RESOLUTION</th>
+                            <th>CONFIDENCE</th>
+                            <th>TIMESTAMP</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="caller-cell">
+                                    <div class="avatar-cell">JS</div>
+                                    <div>
+                                        <div class="caller-name">Jordan Smith</div>
+                                        <div class="caller-phone">+1 (555) 012-3456</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>12m 45s</td>
+                            <td><span class="status-pill resolved">Resolved</span></td>
+                            <td>
+                                <div class="confidence-cell">
+                                    <div class="progress-bar"><div class="progress" style="width: 94%"></div></div>
+                                    <span>94%</span>
+                                </div>
+                            </td>
+                            <td>Today, 10:24 AM</td>
+                            <td><button class="btn-icon"><i data-lucide="more-vertical"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="caller-cell">
+                                    <div class="avatar-cell">EG</div>
+                                    <div>
+                                        <div class="caller-name">Elena Gilbert</div>
+                                        <div class="caller-phone">+1 (555) 987-6543</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>04m 12s</td>
+                            <td><span class="status-pill escalated">Escalated</span></td>
+                            <td>
+                                <div class="confidence-cell">
+                                    <div class="progress-bar"><div class="progress" style="width: 68%"></div></div>
+                                    <span>68%</span>
+                                </div>
+                            </td>
+                            <td>Today, 09:15 AM</td>
+                            <td><button class="btn-icon"><i data-lucide="more-vertical"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="caller-cell">
+                                    <div class="avatar-cell">UK</div>
+                                    <div>
+                                        <div class="caller-name">Unknown Caller</div>
+                                        <div class="caller-phone">+1 (555) 321-0987</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>--</td>
+                            <td><span class="status-pill missed">Missed</span></td>
+                            <td>
+                                <div class="confidence-cell">
+                                    <div class="progress-bar"><div class="progress" style="width: 0%"></div></div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>Yesterday, 05:42 PM</td>
+                            <td><button class="btn-icon"><i data-lucide="more-vertical"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-footer">
+                    <span>Showing 1 to 5 of 48 entries</span>
+                    <div class="pagination">
+                        <button class="page-btn disabled"><i data-lucide="chevron-left"></i></button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Knowledge Base -->
+        <section id="knowledge-base" class="content-section">
+            <div class="section-header">
+                <div>
+                    <h1>Knowledge Management</h1>
+                </div>
+                <button class="btn btn-secondary"><i data-lucide="refresh-cw"></i> Retrain Agent</button>
+            </div>
+
+            <div class="tabs-container">
+                <button class="tab-btn active">FAQs</button>
+                <button class="tab-btn">Uploaded Files</button>
+                <button class="tab-btn">Knowledge Gaps <span class="tab-badge">12</span></button>
+            </div>
+
+            <div class="card knowledge-card">
+                <div class="knowledge-actions">
+                    <button class="btn btn-outline"><i data-lucide="plus-circle"></i> Add FAQ</button>
+                    <button class="btn btn-outline"><i data-lucide="upload"></i> Upload Document</button>
+                    <span class="last-sync"><i data-lucide="clock"></i> Last sync: 12 minutes ago</span>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>SOURCE NAME</th>
+                            <th>TYPE</th>
+                            <th>STATUS</th>
+                            <th>LAST UPDATED</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Company Handbook 2024</td>
+                            <td><span class="type-badge">PDF</span></td>
+                            <td><span class="status-dot success"></span> Indexed</td>
+                            <td>2 hours ago</td>
+                            <td><a href="#" class="edit-link">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>Refund Policy FAQ</td>
+                            <td><span class="type-badge">FAQ</span></td>
+                            <td><span class="status-dot processing"></span> Indexing</td>
+                            <td>10 mins ago</td>
+                            <td><a href="#" class="edit-link">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert-box info-alert">
+                <div class="alert-icon"><i data-lucide="lightbulb"></i></div>
+                <div class="alert-content">
+                    <div class="alert-header">
+                        <h4>New Knowledge Gaps Identified</h4>
+                        <span class="alert-label">URGENT REVIEW NEEDED</span>
+                    </div>
+                    <p>Our AI agent identified 12 unique questions from users that couldn't be answered using current sources. Addressing these will improve agent accuracy by approximately 18%.</p>
+                    <div class="alert-actions">
+                        <button class="btn btn-primary btn-sm">Review All Gaps</button>
+                        <button class="btn btn-ghost btn-sm">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Billing & Usage -->
+        <section id="billing" class="content-section">
+            <div class="section-header">
+                <div>
+                    <h1>Billing & Usage</h1>
+                    <p>Manage your enterprise subscription and resource consumption.</p>
+                </div>
+                <div class="header-btns">
+                    <button class="btn btn-outline"><i data-lucide="download"></i> Export Usage</button>
+                    <button class="btn btn-primary">View Invoices</button>
+                </div>
+            </div>
+
+            <div class="billing-grid">
+                <div class="billing-main">
+                    <div class="card plan-card">
+                        <div class="plan-info">
+                            <div class="plan-icon"><i data-lucide="award"></i></div>
+                            <div>
+                                <div class="plan-status">CURRENT PLAN <span class="badge-active">ACTIVE</span></div>
+                                <h2>Pro Plan</h2>
+                                <p>$49.00 / month • Next billing date: Oct 12, 2023</p>
+                            </div>
+                            <button class="btn btn-primary">Upgrade Plan</button>
+                        </div>
+                    </div>
+
+                    <div class="card usage-card">
+                        <h3><i data-lucide="bar-chart"></i> Usage Tracking</h3>
+                        <div class="usage-stat">
+                            <div class="stat-header">
+                                <span>Minutes Used</span>
+                                <span class="stat-value">750 / 1,000 min</span>
+                            </div>
+                            <div class="progress-bar large"><div class="progress" style="width: 75%"></div></div>
+                            <p class="stat-help">75% of monthly quota reached. 14 days remaining.</p>
+                        </div>
+                        <div class="overage-toggle">
+                            <div class="toggle-icon"><i data-lucide="trending-up"></i></div>
+                            <div class="toggle-info">
+                                <h4>Overage Tracking</h4>
+                                <p>Auto-billing enabled for usage exceeding plan limits</p>
+                            </div>
+                            <div class="toggle-price">$0.00 current overage</div>
+                            <div class="switch active"></div>
+                        </div>
+                    </div>
+
+                    <div class="card activity-card">
+                        <h3>Recent Usage Activity</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>RESOURCE / EVENT</th>
+                                    <th>CONSUMPTION</th>
+                                    <th>DATE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="resource-cell">
+                                            <div class="resource-name">Batch Transcription - Q3 Report</div>
+                                            <div class="resource-sub">Knowledge Engine v2.4</div>
+                                        </div>
+                                    </td>
+                                    <td>42 minutes</td>
+                                    <td>Oct 05, 2023</td>
+                                    <td><span class="status-badge">PROCESSED</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn-text full-width">View All Activity</button>
+                    </div>
+                </div>
+
+                <div class="billing-side">
+                    <div class="card payment-card">
+                        <div class="card-header">
+                            <h3>PAYMENT METHOD</h3>
+                            <button class="edit-btn">Edit</button>
+                        </div>
+                        <div class="credit-card-ui">
+                            <div class="cc-header">
+                                <i data-lucide="credit-card"></i>
+                                <span>VISA</span>
+                            </div>
+                            <div class="cc-number">•••• •••• •••• 4242</div>
+                            <div class="cc-footer">
+                                <div>
+                                    <div class="cc-label">CARD HOLDER</div>
+                                    <div class="cc-value">Alex Rivera</div>
+                                </div>
+                                <div>
+                                    <div class="cc-label">EXPIRES</div>
+                                    <div class="cc-value">12 / 26</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline full-width"><i data-lucide="plus"></i> Add Payment Method</button>
+                    </div>
+
+                    <div class="card contact-card">
+                        <h3>BILLING CONTACT</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i data-lucide="at-sign"></i></div>
+                            <div class="contact-info">
+                                <div class="contact-value">billing@riveraco.c...</div>
+                                <div class="contact-label">Invoices sent here</div>
+                            </div>
+                            <button class="edit-btn"><i data-lucide="edit-3"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="card promo-card">
+                        <div class="promo-icon"><i data-lucide="home"></i></div>
+                        <h4>Need a custom plan?</h4>
+                        <p>If your usage exceeds 5,000 minutes monthly, our Enterprise team can create a tailored volume plan.</p>
+                        <a href="#" class="promo-link">Contact Sales <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | KnowledgeSource Admin</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo">
+                    <i data-lucide="sparkles" class="logo-icon"></i>
+                    <div class="logo-text">
+                        <span class="brand">KnowledgeSource</span>
+                        <span class="sub-brand">ADMIN CONSOLE</span>
+                    </div>
+                </div>
+                <h1>Welcome Back</h1>
+                <p>Login to manage your knowledge engine</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="mail"></i>
+                        <input type="email" id="email" placeholder="admin@riveraco.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label for="password">Password</label>
+                        <a href="#" class="forgot-link">Forgot?</a>
+                    </div>
+                    <div class="input-wrapper">
+                        <i data-lucide="lock"></i>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                        Remember for 30 days
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary full-width" id="loginBtn">
+                    Sign In
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>Don't have an account? <a href="#">Contact Sales</a></p>
+            </div>
+        </div>
+        
+        <footer class="simple-footer">
+            <p>© 2026 KnowledgeSource AI. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Inline script for login redirection logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide icons
+            lucide.createIcons();
+
+            const loginForm = document.getElementById('loginForm');
+            const loginBtn = document.getElementById('loginBtn');
+
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Show loading state
+                loginBtn.disabled = true;
+                loginBtn.innerHTML = 'Signing in...';
+
+                // Simulate authentication delay
+                setTimeout(() => {
+                    // Set mock session
+                    localStorage.setItem('knowledgeSourceAuth', 'true');
+                    // Redirect to dashboard
+                    window.location.href = 'index.html';
+                }, 1500);
+            });
+
+            // If already logged in, redirect to dashboard
+            if (localStorage.getItem('knowledgeSourceAuth') === 'true') {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
